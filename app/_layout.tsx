@@ -17,6 +17,8 @@ const RootLayout = () => {
       <Slot />
       <StatusBar style="light" />
     </View>
+
+    
   );
 };
 
