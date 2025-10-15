@@ -1,4 +1,12 @@
-export const Colors = {};
+export const Colors = {
+  darkGray: "#2D2D2D",
+  lightGray: "#989898",
+  oragen: "#FF9427",
+
+  textPrimary: "white",
+  textSecondary: "#666666",
+  background: "#000000",
+} as const;
 
 // import { Platform } from "react-native";
 
