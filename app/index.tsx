@@ -6,19 +6,36 @@ import { globalStyles } from "@/styles/global-styles";
 import { View } from "react-native";
 
 const CalculatorApp = () => {
-
-
-  const {formula, buildNumber} = useCalculator()
+  const {
+    formula,
+    buildNumber,
+    clean,
+    toggleSign,
+    deleteLast,
+    divideOperation,
+    prevNumber,
+    timeOperation,
+    minesOperation,
+    addOperation,
+    calculatorSubResult,
+    calculateResul
+  } = useCalculator();
   return (
     <View style={globalStyles.calculatorContainer}>
-      <View style={{ paddingHorizontal: 30, marginBottom: 20 }}></View>
-      <ThemeText variant="h1">{formula}</ThemeText>
-      {/* <ThemeText variant="h2">{formula}</ThemeText> */}
+      <View style={{ paddingHorizontal: 30, marginBottom: 20 }}>
+        <ThemeText variant="h1">{formula}</ThemeText>
+
+        {formula === prevNumber ? (
+          <ThemeText variant="h2"> </ThemeText>
+        ) : (
+          <ThemeText variant="h2">{prevNumber}</ThemeText>
+        )}
+      </View>
 
       <View style={globalStyles.row}>
         <CalculatorButton
           label="C"
-          onPress={() => console.log("c")}
+          onPress={() => clean()}
           blackText
           color={Colors.lightGray}
         ></CalculatorButton>
@@ -26,18 +43,18 @@ const CalculatorApp = () => {
           label="+/-"
           blackText
           color={Colors.lightGray}
-          onPress={() => console.log("+/-")}
+          onPress={() => toggleSign()}
         ></CalculatorButton>
         <CalculatorButton
           label="del"
           blackText
           color={Colors.lightGray}
-          onPress={() => console.log("del")}
+          onPress={() => deleteLast()}
         ></CalculatorButton>
         <CalculatorButton
           label="÷"
           color={Colors.oragen}
-          onPress={() => console.log("÷")}
+          onPress={divideOperation}
         ></CalculatorButton>
       </View>
       <View style={globalStyles.row}>
@@ -56,7 +73,7 @@ const CalculatorApp = () => {
         <CalculatorButton
           label="X"
           color={Colors.oragen}
-          onPress={() => console.log("X")}
+          onPress={() => timeOperation()}
         ></CalculatorButton>
       </View>
       <View style={globalStyles.row}>
@@ -75,26 +92,28 @@ const CalculatorApp = () => {
         <CalculatorButton
           label="-"
           color={Colors.oragen}
-          onPress={() => console.log("-")}
+          onPress={minesOperation}
         ></CalculatorButton>
       </View>
       <View style={globalStyles.row}>
         <CalculatorButton
-          label="3"
-          onPress={() => buildNumber("3")}
+          label="1"
+          onPress={() => buildNumber("1")}
         ></CalculatorButton>
+
         <CalculatorButton
           label="2"
           onPress={() => buildNumber("2")}
         ></CalculatorButton>
         <CalculatorButton
-          label="1"
-          onPress={() => buildNumber("1")}
+          label="3"
+          onPress={() => buildNumber("3")}
         ></CalculatorButton>
+
         <CalculatorButton
           label="+"
           color={Colors.oragen}
-          onPress={() => console.log("+")}
+          onPress={() => addOperation()}
         ></CalculatorButton>
       </View>
       <View style={globalStyles.row}>
@@ -109,7 +128,7 @@ const CalculatorApp = () => {
         ></CalculatorButton>
         <CalculatorButton
           label="="
-          onPress={() => console.log("=")}
+          onPress={() => calculateResul()}
         ></CalculatorButton>
       </View>
     </View>
