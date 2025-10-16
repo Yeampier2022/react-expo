@@ -50,6 +50,7 @@ export const useCalculator = () => {
   };
 
   const setLastNumber = () => {
+    calculateResul();
     if (number.endsWith(".")) {
       setPrevNumber(number.slice(0, -1));
     }
@@ -75,11 +76,11 @@ export const useCalculator = () => {
 
   const calculateResul = () => {
     const result = calculatorSubResult();
-    setFormula(`${result}`)
+    setFormula(`${result}`);
 
     lastOperation.current = undefined;
-    setPrevNumber('0')
-  }
+    setPrevNumber("0");
+  };
 
   const buildNumber = (numberString: string) => {
     if (number.includes(".") && number.startsWith(".")) return;
@@ -139,6 +140,6 @@ export const useCalculator = () => {
     minesOperation,
     addOperation,
     calculatorSubResult,
-    calculateResul
+    calculateResul,
   };
 };
